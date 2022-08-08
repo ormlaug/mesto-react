@@ -1,12 +1,10 @@
 import React from 'react';
-import './App.css';
+import { Header } from './Header';
 
 function App() {
   return (
     <div className="page__container">
-      <header className="header">
-        <img src="./images/logo.svg" alt="Логотип" className="header__logo" />
-      </header>
+      <Header />
 
       <section className="profile">
         <div className="profile__avatar"></div>
