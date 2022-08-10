@@ -1,22 +1,49 @@
 import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
+import ImagePopup from './ImagePopup';
 import Main from './Main';
+import PopupWithForm from './PopupWithForm';
 
 function App() {
+
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+
+  const handleEditAvatarClick = () => {
+    setIsEditAvatarPopupOpen(true)
+  }
+
+  const handleEditProfileClick = () => {
+    setIsEditProfilePopupOpen(true)
+  }
+
+  const handleAddPlaceClick = () => {
+    setIsAddPlacePopupOpen(true)
+  }
+
   return (
     <div className="page__container">
       <Header />
 
-      <Main />
+      <Main
+        onEditAvatar={handleEditAvatarClick}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        isEditProfilePopupOpen={isEditProfilePopupOpen}
+        isAddPlacePopupOpen={isAddPlacePopupOpen}
+        isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+      />
 
       <Footer />
 
-      <div className="popup popup_type_edit">
-        <div className="popup__container">
-          <button type="button" className="popup__close" aria-label="close"></button>
-          <form className="form" name="edit-form" action="#" noValidate>
-            <h2 className="form__heading">Редактировать профиль</h2>
+      <PopupWithForm
+        title="Редактировать профиль"
+        name="edit-form"
+        buttonText="Сохранить"
+        isOpen={isEditAvatarPopupOpen}
+        >
             <div className="form__container">
               <input
                 minLength="2"
@@ -43,16 +70,14 @@ function App() {
               />
               <span className="form__error" id="about-error"></span>
             </div>
-            <button type="submit" className="form__save-button" aria-label="save">Сохранить</button>
-          </form>
         </div>
-      </div>
+      </>
 
-      <div className="popup popup_type_add">
-        <div className="popup__container">
-          <button type="button" className="popup__close" aria-label="close"></button>
-          <form className="form" name="add-form" action="#" noValidate>
-            <h2 className="form__heading">Новое место</h2>
+      <PopupWithForm
+      title={"Новое место"}
+      name={"add-form"}
+      isOpen={isAddPlacePopupOpen}
+      >
             <div className="form__container">
               <input
                 minLength="2"
@@ -80,21 +105,15 @@ function App() {
             <button type="submit" className="form__save-button" aria-label="save">Создать</button>
           </form>
         </div>
-      </div>
+      </>
 
-      <div className="popup popup_type_picture">
-        <div className="popup__container popup__container_for-picture">
-          <button type="button" className="popup__close" aria-label="close"></button>
-          <img className="popup__image" />
-          <p className="popup__subtitle"></p>
-        </div>
-      </div>
+      <ImagePopup />
 
-      <div className="popup popup_type_avatar">
-        <div className="popup__container popup__container_for-avatar">
-          <button type="button" className="popup__close" aria-label="close"></button>
-          <form className="form" name="avatar-form" action="#" novalidate>
-            <h2 className="form__heading">Обновить аватар</h2>
+      <PopupWithForm
+      title={"Обновить аватар"}
+      name={"avatar-form"}
+      isOpen={isEditAvatarPopupOpen}
+      >
             <div className="form__container">
               <input
                 type="url"
@@ -109,7 +128,7 @@ function App() {
             <button type="submit" className="form__save-button" aria-label="save">Сохранить</button>
           </form>
         </div>
-      </div>
+      </>
 
   <div className="popup popup_type_delete">
     <div className="popup__container popup__container_for-removing">
