@@ -38,13 +38,8 @@ function App() {
 
       <Footer />
 
-      <PopupWithForm
-        title="Редактировать профиль"
-        name="edit-form"
-        buttonText="Сохранить"
-        isOpen={isEditAvatarPopupOpen}
-        >
-            <div className="form__container">
+      <PopupWithForm title="Редактировать профиль" name="edit-form" buttonText="Сохранить" isOpen={isEditAvatarPopupOpen}>
+          <div className="form__container">
               <input
                 minLength="2"
                 maxlength="40"
@@ -71,7 +66,8 @@ function App() {
               <span className="form__error" id="about-error"></span>
             </div>
         </div>
-      </>
+      </PopupWithForm>
+      
 
       <PopupWithForm
       title={"Новое место"}
@@ -105,7 +101,7 @@ function App() {
             <button type="submit" className="form__save-button" aria-label="save">Создать</button>
           </form>
         </div>
-      </>
+    </PopupWithForm>
 
       <ImagePopup />
 
@@ -128,7 +124,7 @@ function App() {
             <button type="submit" className="form__save-button" aria-label="save">Сохранить</button>
           </form>
         </div>
-      </>
+       </PopupWithForm>
 
   <div className="popup popup_type_delete">
     <div className="popup__container popup__container_for-removing">

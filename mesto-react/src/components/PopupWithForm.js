@@ -1,6 +1,6 @@
 import React from "react";
 
-function PopupWithForm() {
+function PopupWithForm(props) {
   return (
     <div className={`
     popup

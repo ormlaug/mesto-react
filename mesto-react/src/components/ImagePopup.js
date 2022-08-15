@@ -1,4 +1,4 @@
-function ImagePopup() {
+function ImagePopup(props) {
   return (
     <div className="popup popup_type_picture">
       <div className="popup__container popup__container_for-picture">
