@@ -7,7 +7,6 @@ import PopupWithForm from './PopupWithForm';
 
 function App() {
 
-  const [isPopupOpen, setPopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -48,7 +47,7 @@ function App() {
           <div className="form__container">
               <input
                 minLength="2"
-                maxlength="40"
+                maxLength="40"
                 id="name"
                 name="name"
                 type="text"
@@ -61,7 +60,7 @@ function App() {
             <div className="form__container">
               <input
                 minLength="2"
-                maxlength="200"
+                maxLength="200"
                 id="about"
                 name="about"
                 type="text"
@@ -79,7 +78,7 @@ function App() {
           <div className="form__container">
             <input
               minLength="2"
-              maxlength="30"
+              maxLength="30"
               id="place"
               name="place"
               type="text"
