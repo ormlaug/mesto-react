@@ -38,8 +38,8 @@ function Main(props) {
 
         <section className="cards">
           <ul className="cards__list">
-            {cards.map((card, id) => {
-              return <Card card={card} key={id} />
+            {cards.map((card) => {
+              return <Card card={card} key={card._id} />
             })}
           </ul>
         </section>
