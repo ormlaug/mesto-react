@@ -23,6 +23,11 @@ function App() {
     setIsAddPlacePopupOpen(true)
   }
   
+  const closeAllPopups = () => {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
 
   return (
     <div className="page__container">
@@ -32,9 +37,6 @@ function App() {
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
-        isEditProfilePopupOpen={isEditProfilePopupOpen}
-        isAddPlacePopupOpen={isAddPlacePopupOpen}
-        isEditAvatarPopupOpen={isEditAvatarPopupOpen}
       />
 
       <Footer />
@@ -43,15 +45,17 @@ function App() {
 
       <PopupWithForm
         title={"Редактировать профиль"}
-        name={"edit"}>
+        name={"edit"}
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}>
           <div className="form__container">
               <input
-                minLength="2"
-                maxLength="40"
+                minLength={2}
+                maxLength={40}
                 id="name"
                 name="name"
                 type="text"
-                class="form__item form__item_el_name"
+                className="form__item form__item_el_name"
                 placeholder="Имя"
                 required
               />
@@ -59,12 +63,12 @@ function App() {
             </div>
             <div className="form__container">
               <input
-                minLength="2"
-                maxLength="200"
+                minLength={2}
+                maxLength={200}
                 id="about"
                 name="about"
                 type="text"
-                class="form__item form__item_el_text"
+                className="form__item form__item_el_text"
                 placeholder="О себе"
                 required
               />
@@ -74,15 +78,17 @@ function App() {
 
       <PopupWithForm
         title={"Новое место"}
-        name={"add"}>
+        name={"add"}
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}>
           <div className="form__container">
             <input
-              minLength="2"
-              maxLength="30"
+              minLength={2}
+              maxLength={30}
               id="place"
               name="place"
               type="text"
-              class="form__item form__item_el_card-name"
+              className="form__item form__item_el_card-name"
               placeholder="Название"
               required />
             <span className="form__error" id="place-error"></span>
@@ -101,7 +107,9 @@ function App() {
           
           <PopupWithForm
             title={"Обновить аватар"}
-            name={"avatar"}>
+            name={"avatar"}
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}>
               <div className="form__container">
                 <input
                   type="url"
