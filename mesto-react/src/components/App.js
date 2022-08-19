@@ -46,6 +46,7 @@ function App() {
       <PopupWithForm
         title={"Редактировать профиль"}
         name={"edit"}
+        button={"Сохранить"}
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}>
           <div className="form__container">
@@ -79,6 +80,7 @@ function App() {
       <PopupWithForm
         title={"Новое место"}
         name={"add"}
+        button={"Создать"}
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}>
           <div className="form__container">
@@ -105,23 +107,24 @@ function App() {
           </div>
         </PopupWithForm>
           
-          <PopupWithForm
-            title={"Обновить аватар"}
-            name={"avatar"}
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}>
-              <div className="form__container">
-                <input
-                  type="url"
-                  id="avatar"
-                  name="avatar"
-                  className="form__item form__item_el_link"
-                  placeholder="Ссылка на картинку"
-                  required />
-                <span className="form__error" id="avatar-error"></span>
-              </div>
-          </PopupWithForm>
-      </div>
+        <PopupWithForm
+          title={"Обновить аватар"}
+          name={"avatar"}
+          button={"Сохранить"}
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}>
+            <div className="form__container">
+              <input
+                type="url"
+                id="avatar"
+                name="avatar"
+                className="form__item form__item_el_link"
+                placeholder="Ссылка на картинку"
+                required />
+              <span className="form__error" id="avatar-error"></span>
+            </div>
+        </PopupWithForm>
+    </div>
   );
 }
 
