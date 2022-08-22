@@ -1,9 +1,9 @@
 import React from "react";
 
-function Card(props) {
+function Card(props, handleCardClick) {
 
   function handleClick() {
-    props.onCardClick(props.card);
+    handleCardClick(props.card);
   }
 
   return (
@@ -11,6 +11,7 @@ function Card(props) {
       <img className="cards__photo"
         src={props.card.link}
         alt={props.card.name}
+        onClick={handleClick}
       />
       <button type="button" className="cards__delete-button" aria-label="delete"></button>
       <div className="cards__info">

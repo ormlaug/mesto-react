@@ -9,9 +9,9 @@ function ImagePopup(props) {
       <div className="popup__container popup__container_for-picture">
         <button type="button" className="popup__close" aria-label="close" onClick={props.onClose}></button>
         <img className="popup__image"
-          src={props.card}
+          src={props.link}
         />
-        <p className="popup__subtitle">{props.card.name}</p>
+        <p className="popup__subtitle">{props.name}</p>
       </div>
     </div>
   )
