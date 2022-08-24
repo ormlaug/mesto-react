@@ -19,7 +19,7 @@ function Main(props) {
         setCards(cards);
         })
         .catch(err => {console.log(err)});
-      })
+      }, [])
 
   return (
     <div>
@@ -39,7 +39,7 @@ function Main(props) {
         <section className="cards">
           <ul className="cards__list">
             {cards.map((card) => {
-              return <Card card={card} key={card._id} />
+              return <Card card={card} key={card._id} onCardClick={props.onCardClick} />
             })}
           </ul>
         </section>
