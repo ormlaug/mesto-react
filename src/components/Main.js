@@ -1,5 +1,5 @@
 import React from "react";
-import Api from "utils/Api";
+import {api} from "utils/api";
 import Card from "./Card";
 
 
@@ -11,7 +11,7 @@ function Main(props) {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    Promise.all([Api.getUserInfo(), Api.getInitialCards()])
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
         setUserName(user.name);
         setUserDescription(user.about);
