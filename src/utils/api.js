@@ -97,4 +97,4 @@ class Api {
 
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
 
-export {api};
+export default api;
