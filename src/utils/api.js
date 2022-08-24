@@ -1,4 +1,4 @@
-class api {
+class Api {
     constructor(baseUrl) {
       this._url = baseUrl;
       this._headers = {
@@ -95,4 +95,4 @@ class api {
 
   }
 
-  export const api = new api('https://mesto.nomoreparties.co/v1/cohort-45')
+  export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45')
