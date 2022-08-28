@@ -19,11 +19,11 @@ function Card(props) {
   }
 
   return (
-    <li className="cards__item"
-      onClick={handleClick}>
+    <li className="cards__item">
       <img className="cards__photo"
         src={props.card.link}
         alt={props.card.name}
+        onClick={handleClick}
       />
       <button type="button" className={cardDeleteButtonClassName} aria-label="delete"></button>
       <div className="cards__info">
