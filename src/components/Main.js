@@ -1,6 +1,5 @@
 import CurrentUserContext from "contexts/CurrentUserContext";
 import React, { useContext } from "react";
-import api from "../utils/api";
 import Card from "./Card";
 
 
