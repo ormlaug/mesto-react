@@ -18,6 +18,14 @@ function Card(props) {
     props.onCardClick(props.card);
   }
 
+  function handleLikeClick() {
+    props.onCardLike(props.card);
+  }
+
+  function handleDeleteClick() {
+    props.onCardDelete(props.card);
+  }
+
   return (
     <li className="cards__item">
       <img className="cards__photo"
@@ -25,11 +33,11 @@ function Card(props) {
         alt={props.card.name}
         onClick={handleClick}
       />
-      <button type="button" className={cardDeleteButtonClassName} aria-label="delete"></button>
+      <button type="button" className={cardDeleteButtonClassName} onClick={handleDeleteClick} aria-label="delete"></button>
       <div className="cards__info">
         <h2 className="cards__title">{props.card.name}</h2>
         <div>
-          <button type="button" className={cardLikeButtonClassName} aria-label="like"></button>
+          <button type="button" className={cardLikeButtonClassName} onClick={handleLikeClick} aria-label="like"></button>
           <p className="cards__likes-number">{props.card.likes.length}</p>
         </div>
       </div>
