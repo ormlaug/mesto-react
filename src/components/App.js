@@ -1,6 +1,7 @@
 import CurrentUserContext from 'contexts/CurrentUserContext';
 import React from 'react';
 import api from 'utils/api';
+import EditProfilePopup from './EditProfilePopup';
 import Footer from './Footer';
 import Header from './Header';
 import ImagePopup from './ImagePopup';
@@ -69,40 +70,10 @@ function App() {
           onClose={closeAllPopups}>
         </ImagePopup>
 
-        <PopupWithForm
-          title={"Редактировать профиль"}
-          name={"edit"}
-          button={"Сохранить"}
+        <EditProfilePopup 
           isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}>
-            <div className="form__container">
-                <input
-                  minLength={2}
-                  maxLength={40}
-                  id="name"
-                  name="name"
-                  type="text"
-                  className="form__item form__item_el_name"
-                  placeholder="Имя"
-                  required
-                />
-                <span className="form__error" id="name-error"></span>
-              </div>
-              <div className="form__container">
-                <input
-                  minLength={2}
-                  maxLength={200}
-                  id="about"
-                  name="about"
-                  type="text"
-                  className="form__item form__item_el_text"
-                  placeholder="О себе"
-                  required
-                />
-                <span className="form__error" id="about-error"></span>
-              </div>
-        </PopupWithForm>
-
+          onClose={closeAllPopups} />
+          
         <PopupWithForm
           title={"Новое место"}
           name={"add"}
