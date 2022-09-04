@@ -1,6 +1,7 @@
 import CurrentUserContext from 'contexts/CurrentUserContext';
 import React from 'react';
 import api from 'utils/api';
+import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import Footer from './Footer';
 import Header from './Header';
@@ -114,24 +115,11 @@ function App() {
               <span className="form__error" id="link-error"></span>
             </div>
           </PopupWithForm>
-            
-          <PopupWithForm
-            title={"Обновить аватар"}
-            name={"avatar"}
-            button={"Сохранить"}
+          
+          <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}>
-              <div className="form__container">
-                <input
-                  type="url"
-                  id="avatar"
-                  name="avatar"
-                  className="form__item form__item_el_link"
-                  placeholder="Ссылка на картинку"
-                  required />
-                <span className="form__error" id="avatar-error"></span>
-              </div>
-          </PopupWithForm>
+            onClose={closeAllPopups} />
+          
       </div>
     </CurrentUserContext.Provider>
   );
