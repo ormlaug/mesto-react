@@ -42,13 +42,21 @@ function App() {
     setSelectedCard(null);
   }
 
+  function setNewUserInfo(data) {
+    return { name: data.name, about: data.about, avatar: data.avatar }
+  }
+
   function handleUpdateUser(data) {
     api.setUserInfo(data)
       .then((data) => {
-        setCurrentUser({
-          name: data.name,
-          about: data.about
-        })
+        setCurrentUser(setNewUserInfo(data))
+      })
+  }
+
+  function handleUpdateAvatar(link) {
+    api.editAvatar(link)
+      .then((link) => {
+        setCurrentUser(setNewUserInfo(link))
       })
   }
 
@@ -118,7 +126,8 @@ function App() {
           
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups} />
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar} />
           
       </div>
     </CurrentUserContext.Provider>
