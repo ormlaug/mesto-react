@@ -47,7 +47,6 @@ class Api {
     //cards
 
     addNewCard(item) {
-      console.log({item});
       return fetch(`${this._url}/cards`, {
         method: 'POST',
         headers: this._headers,
@@ -83,8 +82,8 @@ class Api {
       }
     }
 
-    deleteCard(data) {
-      return fetch(`${this._url}/cards/${data._data._id}`, {
+    deleteCard(id) {
+      return fetch(`${this._url}/cards/${id}`, {
         method: 'DELETE',
         headers: this._headers,
       })

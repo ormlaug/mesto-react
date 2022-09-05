@@ -8,7 +8,6 @@ import Footer from './Footer';
 import Header from './Header';
 import ImagePopup from './ImagePopup';
 import Main from './Main';
-import PopupWithForm from './PopupWithForm';
 
 function App() {
 
@@ -72,9 +71,9 @@ function App() {
   }
 
   function handleCardDelete(data) {
-    api.deleteCard(data._data._id)
+    api.deleteCard(data._id)
       .then(() => {
-        setCards((state) => state.filter((c) => c._id !== data.owner._id ));
+        setCards((state) => state.filter((c) => c._id !== data._id ));
       })
     }
 
