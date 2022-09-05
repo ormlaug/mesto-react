@@ -56,8 +56,8 @@ function App() {
 
   function handleUpdateAvatar(link) {
     api.editAvatar(link)
-      .then((link) => {
-        setCurrentUser(setNewUserInfo(link))
+      .then((data) => {
+        setCurrentUser(setNewUserInfo(data))
       })
   }
 
@@ -69,8 +69,11 @@ function App() {
     });
   }
 
-  function handleCardDelete(card) {
-    api.deleteCard(card._id).then(setCards((state) => state.filter((c) => c._id !== card.owner._id )))
+  function handleCardDelete(data) {
+    api.deleteCard(data._data._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== data.owner._id ));
+      })
     }
 
   function handleAddPlaceSubmit(item) {
