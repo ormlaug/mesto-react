@@ -74,11 +74,11 @@ class Api {
         .then(this._returnResOK);
     }
 
-    changeLikeCardStatus(_id, like) {
+    changeLikeCardStatus(data, like) {
       if (like) {
-        return this.removeLike(_id)
+        return this.removeLike(data._id)
       } else {
-        return this.likeCard(_id)
+        return this.likeCard(data._id)
       }
     }
 

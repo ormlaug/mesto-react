@@ -8,10 +8,10 @@ function PopupWithForm(props) {
     <div className={className}>
         <div className="popup__container">
           <button type="button" className="popup__close" aria-label="close" onClick={props.onClose}></button>
-          <form className="form" name={props.name} noValidate>
+          <form className="form" name={props.name} onSubmit={props.onSubmit} noValidate>
             <h2 className="form__heading">{props.title}</h2>
               {props.children}
-            <button type="submit" className="form__save-button" aria-label="save" onSubmit={props.onSubmit}>{props.button}</button>
+            <button type="submit" className="form__save-button" aria-label="save" onClick={props.onClose}>{props.button}</button>
           </form>
         </div>
       </div>
