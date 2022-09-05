@@ -50,14 +50,16 @@ function App() {
   function handleUpdateUser(data) {
     api.setUserInfo(data)
       .then((data) => {
-        setCurrentUser(setNewUserInfo(data))
+        setCurrentUser(setNewUserInfo(data));
+        closeAllPopups()
       })
   }
 
   function handleUpdateAvatar(link) {
     api.editAvatar(link)
       .then((data) => {
-        setCurrentUser(setNewUserInfo(data))
+        setCurrentUser(setNewUserInfo(data));
+        closeAllPopups()
       })
   }
 
@@ -80,6 +82,7 @@ function App() {
     api.addNewCard(item)
       .then((item) => {
         setCards([item, ...cards]);
+        closeAllPopups()
       })
   }
 
