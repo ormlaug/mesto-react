@@ -32,7 +32,6 @@ function EditAvatarPopup(props) {
           <span className="form__error" id="avatar-error"></span>
         </div>
     </PopupWithForm>
-
   )
 }
 
