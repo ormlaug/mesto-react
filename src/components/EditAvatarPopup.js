@@ -3,13 +3,12 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup(props) {
 
-  const ref = useRef();
+  const avaRef = useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
-  
     props.onUpdateAvatar({
-      avatar: ref.current.value()
+      avatar: avaRef.current.value()
     });
   }
 
