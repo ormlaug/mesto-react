@@ -27,7 +27,7 @@ function EditProfilePopup(props) {
   React.useEffect(() => {
     setName(currentUser?.name);
     setDescription(currentUser?.about);
-  }, [currentUser]); 
+  }, [currentUser, props.isOpen]);
 
   return (
     <PopupWithForm
@@ -46,7 +46,7 @@ function EditProfilePopup(props) {
               type="text"
               className="form__item form__item_el_name"
               placeholder="Имя"
-              value={name}
+              value={ name || '' }
               onChange={handleUserName}
               required
             />
@@ -61,7 +61,7 @@ function EditProfilePopup(props) {
               type="text"
               className="form__item form__item_el_text"
               placeholder="О себе"
-              value={description}
+              value={ description || '' }
               onChange={handleUserDescription}
               required
             />

@@ -10,6 +10,10 @@ function EditAvatarPopup(props) {
     props.onUpdateAvatar(avaRef.current.value);
   }
 
+  if (props.isOpen) {
+    avaRef.current.value = '';
+  }
+
   return (
     <PopupWithForm
       title={"Обновить аватар"}

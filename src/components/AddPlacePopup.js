@@ -23,8 +23,8 @@ function AddPlacePopup(props) {
   }
 
   React.useEffect(() => {
-    setName(name);
-    setLink(link);
+    setName('');
+    setLink('');
   }, [props.isOpen])
 
   return (
@@ -45,6 +45,7 @@ function AddPlacePopup(props) {
             className="form__item form__item_el_card-name"
             placeholder="Название"
             onChange={handleCardName}
+            value={ name || ''}
             required />
           <span className="form__error" id="place-error"></span>
         </div>
@@ -56,6 +57,7 @@ function AddPlacePopup(props) {
             className="form__item form__item_el_link"
             placeholder="Ссылка на картинку"
             onChange={handleCardLink}
+            value={ link || ''}
             required />
           <span className="form__error" id="link-error"></span>
         </div>

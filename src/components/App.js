@@ -1,5 +1,5 @@
 import CurrentUserContext from 'contexts/CurrentUserContext';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import api from 'utils/api';
 import AddPlacePopup from './AddPlacePopup';
 import EditAvatarPopup from './EditAvatarPopup';
@@ -11,12 +11,12 @@ import Main from './Main';
 
 function App() {
 
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState(null);
-  const [currentUser, setCurrentUser] = React.useState(null);
-  const [cards, setCards] = React.useState([]);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [cards, setCards] = useState([]);
   
 
   const handleCardClick = (card) => {
@@ -52,6 +52,9 @@ function App() {
         setCurrentUser(setNewUserInfo(data));
         closeAllPopups()
       })
+      .catch(err => {
+        console.log(err);
+    });
   }
 
   function handleUpdateAvatar(link) {
@@ -60,14 +63,20 @@ function App() {
         setCurrentUser(setNewUserInfo(data));
         closeAllPopups()
       })
+      .catch(err => {
+        console.log(err);
+    });
   }
 
   function handleCardLike(data) {
     const isLiked = data.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(data, isLiked)
-    .then((newCard) => {
-      setCards((state) => state.map((c) => c._id === data._id ? newCard : c));
-    });
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === data._id ? newCard : c));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   function handleCardDelete(data) {
@@ -75,6 +84,9 @@ function App() {
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== data._id ));
       })
+      .catch(err => {
+        console.log(err);
+      });
     }
 
   function handleAddPlaceSubmit(item) {
@@ -83,9 +95,12 @@ function App() {
         setCards([item, ...cards]);
         closeAllPopups()
       })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
         setCurrentUser(user);
